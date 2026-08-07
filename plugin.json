@@ -1,0 +1,134 @@
+{
+    "name": "rgbuild",
+    "version": "4.1",
+    "platform": "windows",
+    "endpointType": "executable",
+    "type": "builder",
+    "metaFormat": "rgbuild",
+    "subTypes": ["NAND"],
+    "executable": {
+        "binary": "bin/rgbuild.exe",
+        "workingDir": "bin/"
+    },
+    "capabilities": [
+        {
+            "name": "build_nand",
+            "description": "Create a NAND image from build files (-c <nand_image>)",
+            "command": ["-c"],
+            "positional": ["nand_image"],
+            "outputParam": "nand_image",
+            "params": [
+                {
+                    "name": "nand_image",
+                    "type": "path",
+                    "required": true,
+                    "description": "Output NAND image filename"
+                },
+                {
+                    "name": "cpu_key",
+                    "flagName": "cpu",
+                    "flagStyle": "colon",
+                    "type": "string",
+                    "required": false,
+                    "description": "CPU key (32 hex chars), emitted as -cpu:<key>"
+                },
+                {
+                    "name": "1bl_key",
+                    "flagName": "1bl",
+                    "flagStyle": "colon",
+                    "type": "string",
+                    "required": false,
+                    "description": "1BL key (32 hex chars), emitted as -1bl:<key>"
+                }
+            ]
+        },
+        {
+            "name": "extract_nand",
+            "description": "Extract sections from a NAND image (-e:<types>:<folder> <nand_image>)",
+            "command": [],
+            "positional": ["nand_image"],
+            "params": [
+                {
+                    "name": "nand_image",
+                    "type": "path",
+                    "required": true,
+                    "description": "Source NAND image filename"
+                },
+                {
+                    "name": "extract",
+                    "flagName": "e",
+                    "flagStyle": "colon",
+                    "type": "string",
+                    "required": true,
+                    "description": "Types and output folder as types:folder (b=bootloaders f=files v=keyvault s=smc k=kernel)"
+                }
+            ]
+        },
+        {
+            "name": "copy_from_nand",
+            "description": "Copy sections from one NAND image (-cpy:<types>:<filepath> <nand_image>)",
+            "command": [],
+            "positional": ["nand_image"],
+            "params": [
+                {
+                    "name": "nand_image",
+                    "type": "path",
+                    "required": true,
+                    "description": "Source NAND image filename"
+                },
+                {
+                    "name": "copy",
+                    "flagName": "cpy",
+                    "flagStyle": "colon",
+                    "type": "string",
+                    "required": true,
+                    "description": "Types and filepath as types:filepath (b f v s k)"
+                }
+            ]
+        },
+        {
+            "name": "insert_section",
+            "description": "Insert a section into a NAND image (-i:<type>:<filepath> <nand_image>)",
+            "command": [],
+            "positional": ["nand_image"],
+            "params": [
+                {
+                    "name": "nand_image",
+                    "type": "path",
+                    "required": true,
+                    "description": "Target NAND image filename"
+                },
+                {
+                    "name": "insert",
+                    "flagName": "i",
+                    "flagStyle": "colon",
+                    "type": "string",
+                    "required": true,
+                    "description": "Type and filepath as type:filepath (b=bootloader v=keyvault s=smc)"
+                }
+            ]
+        },
+        {
+            "name": "insert_file",
+            "description": "Insert a file or directory recursively into a NAND image (-if:<filepath> <nand_image>)",
+            "command": [],
+            "positional": ["nand_image"],
+            "params": [
+                {
+                    "name": "nand_image",
+                    "type": "path",
+                    "required": true,
+                    "description": "Target NAND image filename"
+                },
+                {
+                    "name": "file_path",
+                    "flagName": "if",
+                    "flagStyle": "colon",
+                    "type": "path",
+                    "required": true,
+                    "description": "File or directory to insert"
+                }
+            ]
+        }
+    ]
+}
