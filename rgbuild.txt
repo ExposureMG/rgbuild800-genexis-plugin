@@ -1,0 +1,43 @@
+  \___________  _________  _______________  __________________/
+              \\\        \/        \     ///
+                \\/  _    \         \  \//
+                 /   /____/   ______/   \
+                /       \    /__    \    \
+   ____        /___  /   \      \   /     \____           ____
+       \        ///__\    \   _____/   __//    \         /
+        \_____________\____\_///||\\\__________/________/
+     __________________________/  \__________________________
+    /               - RESET GLITCH LOADER-DEV - 0v800        \
+ __/                      RGBuild 4.1                        \___
+   \          by stoker25, tydye81 & #RGLoader@EFnet          /
+    \________________________________________________________/
+usage:    RGBuild.exe <options> <NAND image filename>
+options:
+    -ui         load the (beta) ui
+    -cpu:<key>  sets the cpukey
+    -1bl:<key>  sets the 1blkey
+
+    -c          create image
+
+    -cpy:<types>:<filepath>copy from image
+         b      bootloaders
+         f      files
+         v      keyvault
+         s      smc
+         k      kernel
+
+    -e:<types>:<folder>extract from image
+       b        bootloaders
+       f        files
+       v        keyvault
+       s        smc
+       k        kernel
+
+    -ef:<file>:<folder>extract file
+
+    -i:<type>:<filepath>inserts section into image
+       b        bootloader
+       v        keyvault
+       s        smc
+
+    -if:<filepath>inserts file into image, if directory will add recursively
